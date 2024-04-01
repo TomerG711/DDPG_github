@@ -1,0 +1,5 @@
+/home/dsi/garbert/idpg/datasets/celeba:/opt/IDPG/exp/datasets/celeba_hq/face
+/home/dsi/garbert/idpg/datasets/imagenet:/opt/IDPG/exp/datasets/imagenet/imagenet
+/home/dsi/garbert/idpg/models/celeba:/opt/IDPG/exp/logs/celeba
+/home/dsi/garbert/idpg/models/imagenet:/opt/IDPG/exp/logs/imagenet
+/home/dsi/garbert/idpg/test_results:/opt/IDPG/exp/image_samples
