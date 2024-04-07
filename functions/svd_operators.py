@@ -571,9 +571,8 @@ class Deblurring(A_functions):
         #build 1D conv matrix
         A_small = torch.zeros(img_dim, img_dim, device=device)
         for i in range(img_dim):
-            for j in range(i - kernel.shape[0]//2, i + kernel.shape[0]//2): # as used in DDRM,DDNM, and for comparison by us in DDPG
-                                                                            # potential bug --- they miss the rightest element if kernel size is odd
-            #for j in range(i - math.floor(kernel.shape[0]/2), i + math.ceil(kernel.shape[0]/2)):  # comment the line above and uncomment our fix
+            # for j in range(i - kernel.shape[0]//2, i + kernel.shape[0]//2): # original DDRM,DDNM code: BUG --- they miss the rightest element if kernel size is odd
+            for j in range(i - math.floor(kernel.shape[0]/2), i + math.ceil(kernel.shape[0]/2)):  # our fix
                 if j < 0 or j >= img_dim: continue
                 A_small[i, j] = kernel[j - i + kernel.shape[0]//2]
         #get the svd of the 1D conv
