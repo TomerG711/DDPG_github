@@ -77,13 +77,13 @@ def ddpg_diffusion(x, model, b, A_funcs, y, sigma_y, cls_fn=None, classes=None, 
                     step_size_BP = 1
                     step_size = 1
                 elif args.step_size_mode==1:
-                    step_size_LS = (1 - at_next)/(1 - at)
-                    step_size_BP = 1
-                    step_size = 1
-                elif args.step_size_mode==2:
                     step_size_LS = 1
                     step_size_BP = 1
                     step_size = (1 - at_next)/(1 - at)
+                elif args.step_size_mode==2:
+                    step_size_LS = (1 - at_next)/(1 - at)
+                    step_size_BP = 1
+                    step_size = 1
                 else:
                     assert 1, "unsupported step-size mode"
 

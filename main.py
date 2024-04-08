@@ -93,7 +93,7 @@ def parse_args_and_config():
         "--zeta", type=float, default=0.5, help="for inject_noise, zeta trades between effective estimated noise and random noise"
     )
     parser.add_argument(
-        "--step_size_mode", type=int, default=2, help="0 (fixed 1) | 1 (fixed 1 for BP, decay for LS) | 2 (certain decay as in paper)" # you can add other choices
+        "--step_size_mode", type=int, default=1, help="0 (fixed 1) | 1 (certain decay as in paper) | 2 (fixed 1 for BP, decay for LS)" # you can add other choices
     )
 
     

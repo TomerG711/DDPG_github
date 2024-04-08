@@ -19,13 +19,13 @@ CMD python main.py --config celeba_hq.yml --path_y celeba_hq --deg sr_bicubic --
 
 # Gaussian Deblurring
 CMD python main.py --config celeba_hq.yml --path_y celeba_hq --deg deblur_gauss --sigma_y 0.01 \
-  -i IDPG_celeba_deblur_gauss_sigma_y_0.01 --inject_noise 0 --gamma 100 --eta_tilde -1 --xi 0.0001 \
-  --step_size_mode 0 --operator_imp SVD
+  -i IDPG_celeba_deblur_gauss_sigma_y_0.01 --inject_noise 0 --gamma 100 --eta_tilde 7.0 --step_size_mode 0 \
+  --operator_imp SVD
 
 # Motion Deblurring
 CMD python main.py --config celeba_hq.yml --path_y celeba_hq --deg motion_deblur --sigma_y 0.01 \
-  -i IDPG_celeba_motion_deblur_sigma_y_0.01 --inject_noise 0 --gamma 90 --eta_tilde -1 --xi 0.0001 \
-  --step_size_mode 0 --operator_imp FFT
+  -i IDPG_celeba_motion_deblur_sigma_y_0.01 --inject_noise 0 --gamma 90 --eta_tilde 7.0 --step_size_mode 0 \
+  --operator_imp FFT
 
 # 0.05 Noise tasks
 

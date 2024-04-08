@@ -134,7 +134,9 @@ class Diffusion(object):
             elif name == 'celeba_hq':
                 ckpt = os.path.join(self.args.exp, "logs/celeba/celeba_hq.ckpt")
                 if not os.path.exists(ckpt):
-                    download('https://image-editing-test-12345.s3-us-west-2.amazonaws.com/checkpoints/celeba_hq.ckpt',ckpt)
+                    raise ValueError("CelebA-HQ model checkpoint not found, please download it as mentioned in README.md"
+                                     " file and configure the correct path")
+                    # download('https://image-editing-test-12345.s3-us-west-2.amazonaws.com/checkpoints/celeba_hq.ckpt',ckpt)
             else:
                 raise ValueError
             model.load_state_dict(torch.load(ckpt, map_location=self.device))
@@ -150,15 +152,21 @@ class Diffusion(object):
                 ckpt = os.path.join(self.args.exp, 'logs/imagenet/%dx%d_diffusion.pt' % (
                 self.config.data.image_size, self.config.data.image_size))
                 if not os.path.exists(ckpt):
-                    download(
-                        'https://openaipublic.blob.core.windows.net/diffusion/jul-2021/%dx%d_diffusion_uncond.pt' % (
-                        self.config.data.image_size, self.config.data.image_size), ckpt)
+                    # download(
+                    #     'https://openaipublic.blob.core.windows.net/diffusion/jul-2021/%dx%d_diffusion_uncond.pt' % (
+                    #     self.config.data.image_size, self.config.data.image_size), ckpt)
+                    raise ValueError(
+                        "ImageNet model checkpoint not found, please download it as mentioned in README.md"
+                        " file and configure the correct path")
             else:
                 ckpt = os.path.join(self.args.exp, "logs/imagenet/256x256_diffusion_uncond.pt")
                 if not os.path.exists(ckpt):
-                    download(
-                        'https://openaipublic.blob.core.windows.net/diffusion/jul-2021/256x256_diffusion_uncond.pt',
-                        ckpt)
+                    raise ValueError(
+                        "ImageNet model checkpoint not found, please download it as mentioned in README.md"
+                        " file and configure the correct path")
+                    # download(
+                    #     'https://openaipublic.blob.core.windows.net/diffusion/jul-2021/256x256_diffusion_uncond.pt',
+                    #     ckpt)
 
             model.load_state_dict(torch.load(ckpt, map_location=self.device))
             model.to(self.device)
