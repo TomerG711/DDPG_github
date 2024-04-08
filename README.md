@@ -53,7 +53,7 @@ git clone https://github.com/tirer-lab/DDPG.git
 
 ### Environment
 
-There are several dependecies required, and you may install it via *pip* or *docker*.
+There are several dependencies required, and you may install it via *pip* or *docker*.
 The code was tested on Python 3.8 and PyTorch 1.9.0.
 
 #### Pip
@@ -117,7 +117,7 @@ Download it and place it in `DDPG/exp/logs/imagenet/`.
 ## Parameters
 
 The general python command to run the code is:
-python main.py --config {config}.yml --path_y {dataset_folder} --deg {deg} --sigma_y {sigma_y} \
+python main.py --config {config}.yml --path_y {dataset_folder} --deg {deg} --sigma_y {sigma_y} 
 -i {image_folder} --inject_noise {inject_noise} --gamma {gamma} --zeta {zeta} --eta_tilde {eta_tilde} \
 --step_size_mode {step_size_mode} --operator_imp {operator_implementation}
 
