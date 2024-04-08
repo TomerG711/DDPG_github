@@ -118,7 +118,7 @@ Download it and place it in `DDPG/exp/logs/imagenet/`.
 
 The general python command to run the code is:
 python main.py --config {config}.yml --path_y {dataset_folder} --deg {deg} --sigma_y {sigma_y} 
--i {image_folder} --inject_noise {inject_noise} --gamma {gamma} --zeta {zeta} --eta_tilde {eta_tilde} \
+-i {image_folder} --inject_noise {inject_noise} --gamma {gamma} --zeta {zeta} --eta_tilde {eta_tilde} 
 --step_size_mode {step_size_mode} --operator_imp {operator_implementation}
 
 Where:
