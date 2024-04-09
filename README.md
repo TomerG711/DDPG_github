@@ -77,7 +77,7 @@ The repository contains [Dockerfile](Dockerfile), in order to use it run (after 
 docker build .
 ```
 
-If you wish to run *IDPG* instead of *DDPG*, You can swap the [`CMD`](Dockerfile#L5) commands in the Docker file.
+If you wish to run *IDPG* instead of *DDPG*, You can swap the [`CMD`](Dockerfile#L9) commands in the Docker file.
 
 ## Motion Deblur
 
