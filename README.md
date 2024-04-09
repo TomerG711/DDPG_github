@@ -148,7 +148,7 @@ In order to reproduce the paper's results, there are 2 evaluation scripts:
 Both scripts contain all tasks mentioned in the paper with the relevant configuration.
 
 ## Qualitative Results
-![image](figs/motion_deblur_imagenet.jpg)
+![Qualitative Results](figs/qualitative_results.png)
 
 ## Citations
 
@@ -159,7 +159,6 @@ This repository is based on:
 TODO:
 table of contents
 fill above
-add images
 datasets
 Note that it based on DDNM
 citations
