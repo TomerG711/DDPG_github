@@ -169,7 +169,7 @@ def get_dataset(args, config):
         if config.data.subset_1k:
             from datasets.imagenet_subset import ImageDataset
             dataset = ImageDataset(os.path.join(args.exp, 'datasets', 'imagenet', 'imagenet'),
-                     os.path.join(args.exp, 'imagenet_val_1k_full.txt'),
+                     os.path.join(args.exp, 'imagenet_val.txt'),
                      image_size=config.data.image_size,
                      normalize=False)
             test_dataset = dataset
