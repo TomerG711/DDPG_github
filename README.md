@@ -167,5 +167,6 @@ If you used this repository in you research, please cite the paper:
 ## Acknowledgements
 
 This repository is based on:
-1. https://github.com/wyhuai/DDNM - Base code, pre-trained models and datasets.
+1. https://github.com/wyhuai/DDNM - Base code, CelebA-HQ pre-trained model and datasets.
 2. https://github.com/LeviBorodenko/motionblur - Motion deblur implementation.
+3. https://github.com/openai/guided-diffusion - ImageNet pre-trained model.
