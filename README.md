@@ -77,28 +77,27 @@ The repository contains [Dockerfile](Dockerfile), in order to use it run (after 
 docker build .
 ```
 
-If you wish to run *IDPG* instead of *DDPG*, You can swap the `CMD` in the Docker file.
+If you wish to run *IDPG* instead of *DDPG*, You can swap the [`CMD`](Dockerfile#L5) commands in the Docker file.
 
 ## Motion Deblur
 
 For motion deblur we used the following git repository to generate the
 kernels: https://github.com/LeviBorodenko/motionblur.
 
-Clone that repository and copy the *motionblur.py* file into DDPG/functions.
+Clone that repository and copy the *motionblur.py* file into `DDPG/functions`.
 
 As mentioned in the paper, we used motion deblur kernels with `intensity=0.5`.
 
 ## Datasets
 
-The datasets used in the paper are CelebA-HQ and ImageNet.
+The datasets used in the paper are CelebA-HQ and ImageNet. Both can be found in: 
+[[Google drive](https://drive.google.com/drive/folders/1cSCTaBtnL7OIKXT4SVME88Vtk4uDd_u4?usp=sharing)] [[Baidu drive](https://pan.baidu.com/s/1tQaWBqIhE671v3rrB-Z2mQ?pwd=twq0)].
 
-Dataset download
-link: [[Google drive](https://drive.google.com/drive/folders/1cSCTaBtnL7OIKXT4SVME88Vtk4uDd_u4?usp=sharing)] [[Baidu drive](https://pan.baidu.com/s/1tQaWBqIhE671v3rrB-Z2mQ?pwd=twq0)]
+After you download the datasets, place each dataset in the relevant directory:
 
-Download the CelebA testset and put it into `DDNM/exp/datasets/celeba/`.
-
-Download the ImageNet testset and put it into `DDNM/exp/datasets/imagenet/` and replace the
-file `DDNM/exp/imagenet_val_1k.txt`.
+1. CelebA-HQ - Place the dataset in `DDPG/exp/datasets/celeba/`.
+2. ImageNet -  Place the dataset in `DDPG/exp/datasets/imagenet/`.
+   1. Download the file `imagenet_val_1k.txt` from the links above as well, and place it in `DDPG/exp`. Rename this file to `imagenet_val.txt` in order for the code to use it.
 
 ## Pre-Trained Models
 
@@ -110,6 +109,7 @@ The CelebA-HQ model checkpoint can be
 found [here](https://drive.google.com/file/d/1wSoA5fm_d6JBZk4RZ1SzWLMgev4WqH21/view?usp=share_link).
 Download it and place it in `DDPG/exp/logs/celeba/`.
 
+### ImageNet
 The ImageNet model checkpoint can be
 found [here](https://openaipublic.blob.core.windows.net/diffusion/jul-2021/256x256_diffusion_uncond.pt).
 Download it and place it in `DDPG/exp/logs/imagenet/`.
@@ -117,26 +117,28 @@ Download it and place it in `DDPG/exp/logs/imagenet/`.
 ## Parameters
 
 The general python command to run the code is:
-python main.py --config {config}.yml --path_y {dataset_folder} --deg {deg} --sigma_y {sigma_y} 
--i {image_folder} --inject_noise {inject_noise} --gamma {gamma} --zeta {zeta} --eta_tilde {eta_tilde} 
+```
+python main.py --config {config}.yml --path_y {dataset_folder} --deg {deg} --sigma_y {sigma_y}
+-i {image_folder} --inject_noise {inject_noise} --gamma {gamma} --zeta {zeta} --eta_tilde {eta_tilde}
 --step_size_mode {step_size_mode} --operator_imp {operator_implementation}
+```
 
 Where:
 
-- config: The name of the yml to use to configure the model used.
-- dataset_folder: The name of the directory containing the image dataset.
-- deg: the degradation type to use. Used in paper: `sr_bicubic`, `deblur_gauss`, `motion_deblur`
+- `config`: The name of the yml to use to configure the model used.
+- `dataset_folder`: The name of the directory containing the image dataset.
+- `deg`: the degradation type to use. Used in paper: `sr_bicubic`, `deblur_gauss`, `motion_deblur`
     - When using `sr_bicubic`, the flag `--deg_scale 4` is also required
-- sigma_y: Noise level. Used in paper: `0,0.01,0.05,0.1`.
-- image_folder: Name of directory for output images.
-- inject_noise: Whether to inject noise (1) and run DDPG or not (0) and run IDPG.
-- gamma: The Gamma hyperparameter used in the paper.
-- zeta: The Zeta hyperparameter used in the paper.
-- eta_tilde: The Eta hyperparameter used in the paper.
+- `sigma_y`: Noise level. Used in paper: `0,0.01,0.05,0.1`.
+- `image_folder`: Name of directory for output images.
+- `inject_noise`: Whether to inject noise (1) and run DDPG or not (0) and run IDPG.
+- `gamma`: The Gamma hyperparameter used in the paper.
+- `zeta`: The Zeta hyperparameter used in the paper.
+- `eta_tilde`: The Eta hyperparameter used in the paper.
     - Instead of `eta_tilde`, `xi` can be used, but `eta_tilde` must be set to negative number for `xi` to be noted.
-- step_size_mode: Which step size mode to use. In the paper, `0` (fixed 1) was used for IDPG and DDPG with noise level
-  `0.01`, and `1` (certain decay) was used for the rest of the DDPG runs.
-- operator_implementation - Whether to use SVD or FFT.
+- `step_size_mode`: Which step size mode to use. In the paper, `step_size_mode=0` (fixed 1) was used for IDPG, noiseless DDPG and 
+DDPG with noise level `0.01`. `step_size_mode=1` (certain decay) was used for the rest of the DDPG runs.
+- `operator_implementation` - Whether to use SVD or FFT.
 
 ## Evaluation
 
@@ -148,20 +150,22 @@ In order to reproduce the paper's results, there are 2 evaluation scripts:
 Both scripts contain all tasks mentioned in the paper with the relevant configuration.
 
 ## Qualitative Results
+
 ![Qualitative Results](figs/qualitative_results.png)
 
+Additional results can be found in the paper, including PSNR and LPIPS results compared to competitors.
 ## Citations
-
+If you used this repository in you research, please cite the paper:
+```
+@article{tom2023image,
+  title={Image Restoration by Denoising Diffusion Models with Iteratively Preconditioned Guidance},
+  author={Garber, Tomer and Tirer, Tom},
+  journal={The Computer Vision and Pattern Recognition},
+  year={2024}
+}
+```
 ## Acknowledgements
 
 This repository is based on:
-
-TODO:
-table of contents
-fill above
-datasets
-Note that it based on DDNM
-citations
-
-
-
+1. https://github.com/wyhuai/DDNM - Base code, pre-trained models and datasets.
+2. https://github.com/LeviBorodenko/motionblur - Motion deblur implementation.
