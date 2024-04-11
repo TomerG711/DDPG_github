@@ -120,7 +120,8 @@ The general python command to run the code is:
 ```
 python main.py --config {config}.yml --path_y {dataset_folder} --deg {deg} --sigma_y {sigma_y}
 -i {image_folder} --inject_noise {inject_noise} --gamma {gamma} --zeta {zeta} --eta_tilde {eta_tilde}
---step_size_mode {step_size_mode} --operator_imp {operator_implementation}
+--step_size_mode {step_size_mode} --operator_imp {operator_implementation} --save_y {save_observation}
+--scale_ls {scale_for_gLS}
 ```
 
 Where:
@@ -129,16 +130,26 @@ Where:
 - `dataset_folder`: The name of the directory containing the image dataset.
 - `deg`: the degradation type to use. Used in paper: `sr_bicubic`, `deblur_gauss`, `motion_deblur`
     - When using `sr_bicubic`, the flag `--deg_scale 4` is also required
-- `sigma_y`: Noise level. Used in paper: `0,0.01,0.05,0.1`.
+- `sigma_y`: Noise level. Noise levels used in paper: `0, 0.01, 0.05, 0.1`.
 - `image_folder`: Name of directory for output images.
-- `inject_noise`: Whether to inject noise (1) and run DDPG or not (0) and run IDPG.
+- `inject_noise`: Whether to inject noise (1) and run *DDPG* or not (0) and run *IDPG*.
 - `gamma`: The Gamma hyperparameter used in the paper.
 - `zeta`: The Zeta hyperparameter used in the paper.
 - `eta_tilde`: The Eta hyperparameter used in the paper.
     - Instead of `eta_tilde`, `xi` can be used, but `eta_tilde` must be set to negative number for `xi` to be noted.
 - `step_size_mode`: Which step size mode to use. In the paper, `step_size_mode=0` (fixed 1) was used for IDPG, noiseless DDPG and 
 DDPG with noise level `0.01`. `step_size_mode=1` (certain decay) was used for the rest of the DDPG runs.
-- `operator_implementation` - Whether to use SVD or FFT.
+- `operator_implementation` - Whether to use `SVD` or `FFT`. Defaults to `FFT`.
+- `scale_ls` - The `c` hyperparameter used in the paper, which is Least Squares guidance scale. Defaults to `1`. 
+- `save_observation` - Whether to save the observation (`y`) or not. Defaults to `False`.
+
+
+Additionally, you can configure the sampling steps (defaults to `100` in the paper). In each yml config under `configs` directory
+(`celeba_hq.yml`, `imagenet_256.yml` and `imagenet_256_cc.yml`) you may change:
+```yaml
+sampling:
+  T_sampling: <desired_sampling_steps>
+```
 
 ## Evaluation
 

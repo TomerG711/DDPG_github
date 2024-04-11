@@ -6,5 +6,5 @@ WORKDIR /opt/DDPG
 
 RUN pip install lpips
 
-CMD ./evaluation_DDPG.sh
-#CMD ./evaluation_IDPG.sh
+#CMD ./evaluation_DDPG.sh
+CMD ./evaluation_IDPG.sh
