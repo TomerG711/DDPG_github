@@ -7,8 +7,10 @@ python main.py --config celeba_hq.yml --path_y celeba_hq --deg sr_bicubic --sigm
 -i IDPG_celeba_sr_bicubic_sigma_y_0 --inject_noise 0 --step_size_mode 0 --deg_scale 4 --operator_imp SVD
 
 # Gaussian Deblurring
+
+# Use SVD to reproduce the paper's results.
 python main.py --config celeba_hq.yml --path_y celeba_hq --deg deblur_gauss --sigma_y 0 \
--i IDPG_celeba_deblur_gauss_sigma_y_0 --inject_noise 0 --step_size_mode 0 --operator_imp SVD
+-i IDPG_celeba_deblur_gauss_sigma_y_0 --inject_noise 0 --step_size_mode 0 --operator_imp FFT
 
 # 0.01 Noise tasks
 
@@ -18,9 +20,11 @@ python main.py --config celeba_hq.yml --path_y celeba_hq --deg sr_bicubic --sigm
 --deg_scale 4 --operator_imp SVD
 
 # Gaussian Deblurring
+
+# Use SVD to reproduce the paper's results.
 python main.py --config celeba_hq.yml --path_y celeba_hq --deg deblur_gauss --sigma_y 0.01 \
 -i IDPG_celeba_deblur_gauss_sigma_y_0.01 --inject_noise 0 --gamma 100 --eta_tilde 7.0 --step_size_mode 0 \
---operator_imp SVD
+--operator_imp FFT
 
 # Motion Deblurring
 python main.py --config celeba_hq.yml --path_y celeba_hq --deg motion_deblur --sigma_y 0.01 \
@@ -35,9 +39,11 @@ python main.py --config celeba_hq.yml --path_y celeba_hq --deg sr_bicubic --sigm
 --deg_scale 4 --operator_imp SVD
 
 # Gaussian Deblurring
+
+# Use SVD to reproduce the paper's results.
 python main.py --config celeba_hq.yml --path_y celeba_hq --deg deblur_gauss --sigma_y 0.05 \
 -i IDPG_celeba_deblur_gauss_sigma_y_0.05 --inject_noise 0 --gamma 8 --eta_tilde 0.6 --step_size_mode 0 \
---operator_imp SVD
+--operator_imp FFT
 
 # Motion Deblurring
 python main.py --config celeba_hq.yml --path_y celeba_hq --deg motion_deblur --sigma_y 0.05 \
@@ -47,9 +53,11 @@ python main.py --config celeba_hq.yml --path_y celeba_hq --deg motion_deblur --s
 # 0.1 Noise tasks
 
 # Gaussian Deblurring
+
+# Use SVD to reproduce the paper's results.
 python main.py --config celeba_hq.yml --path_y celeba_hq --deg deblur_gauss --sigma_y 0.1 \
 -i IDPG_celeba_deblur_gauss_sigma_y_0.1 --inject_noise 0 --gamma 6 --eta_tilde 0.6 --step_size_mode 0 \
---operator_imp SVD
+--operator_imp FFT
 
 # Motion Deblurring
 python main.py --config celeba_hq.yml --path_y celeba_hq --deg motion_deblur --sigma_y 0.1 \
@@ -65,8 +73,10 @@ python main.py --config imagenet_256.yml --path_y imagenet --deg sr_bicubic --si
 -i IDPG_imagenet_sr_bicubic_sigma_y_0 --inject_noise 0 --step_size_mode 0 --deg_scale 4 --operator_imp SVD
 
 # Gaussian Deblurring
+
+# Use SVD to reproduce the paper's results.
 python main.py --config imagenet_256.yml --path_y imagenet --deg deblur_gauss --sigma_y 0 \
--i IDPG_imagenet_deblur_gauss_sigma_y_0 --inject_noise 0 --step_size_mode 0 --operator_imp SVD
+-i IDPG_imagenet_deblur_gauss_sigma_y_0 --inject_noise 0 --step_size_mode 0 --operator_imp FFT
 
 # 0.05 Noise tasks
 
@@ -76,9 +86,11 @@ python main.py --config imagenet_256.yml --path_y imagenet --deg sr_bicubic --si
 --step_size_mode 0 --deg_scale 4 --operator_imp SVD
 
 # Gaussian Deblurring
+
+# Use SVD to reproduce the paper's results.
 python main.py --config imagenet_256.yml --path_y imagenet --deg deblur_gauss --sigma_y 0.05 \
--i IDPG_imagenet_deblur_gauss_sigma_y_0.05 --inject_noise 0 --gamma 11 --eta_tilde 0.7 --step_size_mode 0 \
---operator_imp SVD
+-i IDPG_imagenet_deblur_gauss_sigma_y_0.05 --inject_noise 0 --gamma 11 --eta_tilde 0.6 --step_size_mode 0 \
+--operator_imp FFT
 
 # Motion Deblurring
 python main.py --config imagenet_256.yml --path_y imagenet --deg motion_deblur --sigma_y 0.05 \

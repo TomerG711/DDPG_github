@@ -152,6 +152,5 @@ If you used this repository in you research, please cite the paper:
   year={2024}
 }
 ```
-## Acknowledgements
 
 This implementation is inspired by https://github.com/bahjat-kawar/ddrm and https://github.com/wyhuai/DDNM.

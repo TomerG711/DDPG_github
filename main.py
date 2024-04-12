@@ -142,7 +142,6 @@ def parse_args_and_config():
             print("Output image folder exists. Program halted.")
             sys.exit(0)
 
-    # TOM: consider removing
     log_path = os.path.join(args.image_folder, '0_logs.log')
     fh = logging.FileHandler(log_path)#, mode='a')
     fh.setFormatter(formatter)
