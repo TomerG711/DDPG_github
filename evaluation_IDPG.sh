@@ -72,12 +72,12 @@ python main.py --config imagenet_256.yml --path_y imagenet --deg deblur_gauss --
 
 # Super-Resolution Bicubic
 python main.py --config imagenet_256.yml --path_y imagenet --deg sr_bicubic --sigma_y 0.05 \
--i IDPG_imagenet_sr_bicubic_sigma_y_0.05 --inject_noise 0 --gamma 30 --eta_tilde -1 --xi 2e-6 \
+-i IDPG_imagenet_sr_bicubic_sigma_y_0.05 --inject_noise 0 --gamma 30 --eta_tilde 0.2 \
 --step_size_mode 0 --deg_scale 4 --operator_imp SVD
 
 # Gaussian Deblurring
 python main.py --config imagenet_256.yml --path_y imagenet --deg deblur_gauss --sigma_y 0.05 \
--i IDPG_imagenet_deblur_gauss_sigma_y_0.05 --inject_noise 0 --gamma 11 --eta_tilde -1 --step_size_mode 0 \
+-i IDPG_imagenet_deblur_gauss_sigma_y_0.05 --inject_noise 0 --gamma 11 --eta_tilde 0.7 --step_size_mode 0 \
 --operator_imp SVD
 
 # Motion Deblurring

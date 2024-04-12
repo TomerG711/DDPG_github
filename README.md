@@ -11,27 +11,6 @@ The Open University of Israel and Bar-Ilan University
 This repository contains the code release for *Image Restoration by Denoising Diffusion Models with Iteratively
 Preconditioned Guidance* (***DDPG***).
 
-## Abstract
-
-Training deep neural networks has become a common approach for addressing image restoration problems. An alternative for
-training a “task-specific” network for each observation model is to use pretrained deep denoisers for imposing only the
-signal’s prior within iterative algorithms, without additional training.
-
-Recently, a sampling-based variant of this approach has become popular with the rise of diffusion/score-based generative
-models.
-Using denoisers for general purpose restoration requires guiding the iterations to ensure agreement of the signal with
-the observations.
-
-In low-noise settings, guidance that is based on backprojection (BP) has been shown to be a promising strategy
-(used recently also under the names “pseudoinverse” or “range/null-space” guidance). However, the presence of noise in
-the observations hinders the gains from this approach. In this paper, we propose a novel guidance technique,
-based on preconditioning that allows traversing from BP-based guidance to least squares based guidance along the
-restoration scheme.
-
-The proposed approach is robust to noise while still having much simpler implementation than alternative methods
-(e.g., it does not require SVD or a large number of iterations). We use it within both an optimization scheme and a
-sampling-based scheme, and demonstrate its advantages over existing methods for image deblurring and super-resolution.
-
 ## Supported degradations
 
 1. Super-Resolution (Bicubic)
@@ -48,7 +27,6 @@ To clone this repository and the code, run:
 
 ```bash
 git clone https://github.com/tirer-lab/DDPG.git
-
 ```
 
 ### Environment
@@ -66,7 +44,6 @@ Download the relevant torch and torchvision according to your setup, for example
 
 ```
 pip install torch==1.9.0+cu111 torchvision==0.10.1+cu111 -f https://download.pytorch.org/whl/torch_stable.html
-
 ```
 
 #### Docker
@@ -141,7 +118,7 @@ Where:
 DDPG with noise level `0.01`. `step_size_mode=1` (certain decay) was used for the rest of the DDPG runs.
 - `operator_implementation` - Whether to use `SVD` or `FFT`. Defaults to `FFT`.
 - `scale_ls` - The `c` hyperparameter used in the paper, which is Least Squares guidance scale. Defaults to `1`. 
-- `save_observation` - Whether to save the observation (`y`) or not. Defaults to `False`.
+- `save_observation` - Whether to save the observed image (`y`) or not. Defaults to `False`.
 
 
 Additionally, you can configure the sampling steps (defaults to `100` in the paper). In each yml config under `configs` directory
@@ -168,7 +145,7 @@ Additional results can be found in the paper, including PSNR and LPIPS results c
 ## Citations
 If you used this repository in you research, please cite the paper:
 ```
-@article{tom2023image,
+@article{tirer2023image,
   title={Image Restoration by Denoising Diffusion Models with Iteratively Preconditioned Guidance},
   author={Garber, Tomer and Tirer, Tom},
   journal={The Computer Vision and Pattern Recognition},
@@ -177,7 +154,4 @@ If you used this repository in you research, please cite the paper:
 ```
 ## Acknowledgements
 
-This repository is based on:
-1. https://github.com/wyhuai/DDNM - Base code, CelebA-HQ pre-trained model and datasets.
-2. https://github.com/LeviBorodenko/motionblur - Motion deblur implementation.
-3. https://github.com/openai/guided-diffusion - ImageNet pre-trained model.
+This implementation is inspired by https://github.com/bahjat-kawar/ddrm and https://github.com/wyhuai/DDNM.
