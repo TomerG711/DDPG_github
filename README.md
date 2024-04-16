@@ -32,15 +32,15 @@ git clone https://github.com/tirer-lab/DDPG.git
 ### Environment
 
 There are several dependencies required, and you may install it via *pip* or *docker*.
-The code was tested on Python 3.8 and PyTorch 1.9.0.
+The code was written and tested on Python 3.8 and PyTorch 1.9.0.
 
 #### Pip
 
 ```
-pip install torch torchvision lpips numpy tqdm pillow blobfile pyYaml pandas scipy opencv-python 
+pip install torch torchvision lpips numpy tqdm pillow pyYaml pandas scipy
 ```
 
-Download the relevant torch and torchvision according to your setup, for example:
+Install the relevant torch and torchvision versions according to your setup, for example:
 
 ```
 pip install torch==1.9.0+cu111 torchvision==0.10.1+cu111 -f https://download.pytorch.org/whl/torch_stable.html
@@ -54,7 +54,7 @@ The repository contains [Dockerfile](Dockerfile), in order to use it run (after 
 docker build .
 ```
 
-If you wish to run *IDPG* instead of *DDPG*, You can swap the [`CMD`](Dockerfile#L9) commands in the Docker file.
+If you wish to run *IDPG* instead of *DDPG*, You can swap the [`CMD`](Dockerfile#L11) commands in the Docker file.
 
 ## Motion Deblur
 
